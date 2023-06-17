@@ -22,21 +22,49 @@ const Hero = () => {
   `;
 
   const LeftHeading = styled.div`
-    height: 100vh;
+    color: #fff;
+  `;
+  const RightImage = styled.div``;
+  const Title = styled.div``;
+  const WhatAbout = styled.div`
     display: flex;
-    justify-content: space-between;
-    scroll-swap-align: center;
+    gap: 10px;
+  `;
+  const SubTitle = styled.div``;
+  const Desc = styled.div``;
+  const Button = styled.button`
+    align-items: center;
+    background-color: #fa6400;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 10px;
+    position: relative;
+    text-decoration: none;
+    width: auto;
+
+    &:hover {
+      background: #292e49;
+      color: #fff;
+    }
   `;
 
-  const RightImage = styled.div`
-    height: 100vh;
-    display: flex;
-    justify-content: space-between;
-    scroll-swap-align: center;
-  `;
   return (
     <Section>
-      <Container>Hero</Container>
+      <Container>
+        <LeftHeading>
+          <Title>Think. Make. Solve.</Title>
+          <WhatAbout>
+            -- <SubTitle>What we Do</SubTitle>
+          </WhatAbout>
+          <Desc>
+            We Enjoy Creating Delightful, Human-Centered Digital Experiences.
+          </Desc>
+          <Button>Learn More</Button>
+        </LeftHeading>
+      </Container>
     </Section>
   );
 };
