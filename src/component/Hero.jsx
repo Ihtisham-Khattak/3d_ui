@@ -1,5 +1,6 @@
 import React from "react";
 import { styled } from "styled-components";
+import AstronautImg from "../assests/astronaut.png";
 
 const Hero = () => {
   const Section = styled.div`
@@ -18,20 +19,40 @@ const Hero = () => {
     height: 100vh;
     display: flex;
     justify-content: space-between;
-    scroll-swap-align: center;
+    scroll-snap-align: center;
+    align-items: center;
   `;
 
   const LeftHeading = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    flex: 2;
     color: #fff;
   `;
-  const RightImage = styled.div``;
-  const Title = styled.div``;
+  const Title = styled.h1`
+    font-size: 70px;
+  `;
+
   const WhatAbout = styled.div`
     display: flex;
+    color: #f56428;
     gap: 10px;
   `;
-  const SubTitle = styled.div``;
-  const Desc = styled.div``;
+
+  const Question = styled.svg`
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+  `;
+  const SubTitle = styled.h2``;
+
+  const Desc = styled.p`
+    font-size: 0.9rem;
+  `;
+
   const Button = styled.button`
     align-items: center;
     background-color: #fa6400;
@@ -51,19 +72,45 @@ const Hero = () => {
     }
   `;
 
+  const RightImage = styled.div`
+    flex: 2;
+  `;
+  const Astronaut = styled.img`
+    width: 20rem;
+    height: 20rem;
+    transform: rotate(25deg);
+  `;
+
   return (
     <Section>
       <Container>
         <LeftHeading>
           <Title>Think. Make. Solve.</Title>
           <WhatAbout>
-            -- <SubTitle>What we Do</SubTitle>
+            <Question
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
+              />
+            </Question>
+            <SubTitle>What we Do</SubTitle>
           </WhatAbout>
           <Desc>
             We Enjoy Creating Delightful, Human-Centered Digital Experiences.
           </Desc>
           <Button>Learn More</Button>
         </LeftHeading>
+        <RightImage>
+          <Astronaut src={AstronautImg} />
+        </RightImage>
       </Container>
     </Section>
   );
