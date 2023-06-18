@@ -32,7 +32,7 @@ const Hero = () => {
     color: #fff;
   `;
   const Title = styled.h1`
-    font-size: 70px;
+    font-size: 50px;
   `;
 
   const WhatAbout = styled.div`
@@ -73,12 +73,29 @@ const Hero = () => {
   `;
 
   const RightImage = styled.div`
-    flex: 2;
+    flex: 3;
+    position: relative;
   `;
+
   const Astronaut = styled.img`
     width: 20rem;
     height: 20rem;
     transform: rotate(25deg);
+    object-fit: contain;
+    padding-left: 50px;
+    animation: animate 15s infinite ease-out alternate;
+
+    @keyframes animate {
+      to{
+        transform: translateY(10px);
+      }
+    }
+    /* position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto 50px; */
   `;
 
   return (
