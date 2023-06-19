@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import AstronautImg from "../assests/astronaut.png";
 
 const AboutUs = () => {
+  
   const Section = styled.div`
     height: 100vh;
     scroll-snap-align: center;
