@@ -25,28 +25,12 @@ const AboutUs = () => {
 
   const LeftImage = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 15px;
-    flex: 3;
-    color: #fff;
+    flex: 2;
   `;
   const Title = styled.h1`
     font-size: 50px;
   `;
 
-  const WhatAbout = styled.div`
-    display: flex;
-    color: #f56428;
-    gap: 10px;
-  `;
-
-  const Question = styled.svg`
-    width: 1.5rem;
-    height: 1.5rem;
-    display: flex;
-    align-items: center;
-  `;
   const SubTitle = styled.h2``;
 
   const Desc = styled.p`
@@ -73,8 +57,22 @@ const AboutUs = () => {
   `;
 
   const RightHeading = styled.div`
-    flex: 2;
+    flex: 3;
     position: relative;
+    color: #fff;
+    line-height: 50px;
+  `;
+
+  const WhatAbout = styled.div`
+    display: flex;
+    align-items: center;
+    color: #f56428;
+    gap: 10px;
+  `;
+
+  const Question = styled.svg`
+    width: 1.5rem;
+    height: 1.5rem;
   `;
 
   const Astronaut = styled.img`
@@ -105,7 +103,7 @@ const AboutUs = () => {
           <Astronaut src={AstronautImg} />
         </LeftImage>
         <RightHeading>
-          <Title>Think. Make. Solve.</Title>
+          <Title>Think outside the square space</Title>
           <WhatAbout>
             <Question
               xmlns="http://www.w3.org/2000/svg"
@@ -121,12 +119,12 @@ const AboutUs = () => {
                 d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
               />
             </Question>
-            <SubTitle>What we Do</SubTitle>
+            <SubTitle>What we Are</SubTitle>
           </WhatAbout>
           <Desc>
-            We Enjoy Creating Delightful, Human-Centered Digital Experiences.
+            a creative group of designs developers with a passion for the arts
           </Desc>
-          <Button>Learn More</Button>
+          <Button>See our Work</Button>
         </RightHeading>
       </Container>
     </Section>
