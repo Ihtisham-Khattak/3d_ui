@@ -38,14 +38,6 @@ const OurWork = () => {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    position: relative;
-
-    ::after {
-      content: "${(props) => props.text}";
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
   `;
 
   const ListItem = styled.li`
@@ -53,6 +45,31 @@ const OurWork = () => {
     font-weight: 700;
     color: transparent;
     -webkit-text-stroke: 1px white;
+    position: relative;
+    cursor: pointer;
+
+      &::after {
+      content: "${(props) => props.text}";
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      width: 0px;
+      white-space: nowrap;
+      color: pink;
+
+    }
+
+    &:hover {
+      &::after {
+        animation: moveText 0.5s linear both;
+        @keyframes moveText {
+      to{  
+          width: 100%;
+        }
+      }
+      }
+    }
   `;
 
   const Right = styled.div`
@@ -64,7 +81,9 @@ const OurWork = () => {
         <Left>
           <List>
             {data?.map((item, index) => (
-              <ListItem keys={index} text={item}>{item}</ListItem>
+              <ListItem keys={index} text={item}>
+                {item}
+              </ListItem>
             ))}
           </List>
         </Left>
