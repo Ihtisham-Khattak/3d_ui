@@ -4,9 +4,7 @@ import {
   Geographies,
   Geography,
   Annotation,
-  ZoomableGroup,
 } from "react-simple-maps";
-import feature from "../../public/features.json";
 
 const Map = () => {
   return (
@@ -19,7 +17,7 @@ const Map = () => {
       }}
     >
       <Geographies
-        geography={feature}
+        geography="/feature.json"
         fill="#D6D6DA"
         stroke="#FFFFFF"
         strokeWidth={0.5}
@@ -41,7 +39,7 @@ const Map = () => {
         }}
       >
         <text x="-8" textAnchor="end" alignmentBaseline="middle" fill="#F53">
-          {"Paris"}
+          {"Pakistan"}
         </text>
       </Annotation>
     </ComposableMap>

@@ -30,6 +30,7 @@ const Contact = () => {
   const Title = styled.h1`
     font-size: 20px;
     font-weight: 400;
+    color: #fff;
   `;
 
   const Form = styled.form`
@@ -72,6 +73,7 @@ const Contact = () => {
 
   const Right = styled.div`
     flex: 1;
+    z-index: 0;
   `;
 
   return (
