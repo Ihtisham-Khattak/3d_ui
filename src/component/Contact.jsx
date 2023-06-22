@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "styled-components";
 import Map from "./Map";
 
@@ -76,16 +76,47 @@ const Contact = () => {
     z-index: 0;
   `;
 
+  const [formData, setFormData] = useState({
+    formName: "",
+    formEmail: "",
+    formMessage: "",
+  });
+
+  // Handle Form
+  const handleForm = (e) => {
+    e.preventDefault();
+  };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <Section>
       <Container>
         <Left>
-          <Form>
+          <Form onSubmit={handleForm}>
             <Title>Contact Us</Title>
-            <Input placeholder="Name" />
-            <Input placeholder="Email" />
-            <TextArea placeholder="Message" rows={10} />
-            <Button>Submit</Button>
+            <Input
+              placeholder="Enter Name"
+              value={formName}
+              onChange={handleChange}
+            />
+            <Input
+              placeholder="Enter Email"
+              values={formEmail}
+              onChange={handleChange}
+            />
+            <TextArea
+              placeholder="Message"
+              rows={10}
+              value={formMessage}
+              onChange={handleChange}
+            />
+            <Button type="submit">Submit</Button>
           </Form>
         </Left>
         <Right>
