@@ -83,8 +83,16 @@ const Contact = () => {
   });
 
   // Handle Form
-  const handleForm = (e) => {
+  const handleForm = async (e) => {
     e.preventDefault();
+    await axios
+      .post("/send-main", formData)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleChange = (e) => {
