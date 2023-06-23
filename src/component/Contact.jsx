@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
 import Map from "./Map";
+import axios from "axios";
 
 const Contact = () => {
   const Section = styled.div`
@@ -76,30 +77,28 @@ const Contact = () => {
     z-index: 0;
   `;
 
-  const [formData, setFormData] = useState({
-    formName: "",
-    formEmail: "",
-    formMessage: "",
-  });
+  const [userName, setuserName] = useState();
+  console.log("🚀 ~ file: Contact.jsx:81 ~ Contact ~ userName:", userName);
+  const [userEmail, setuserEmail] = useState();
+  console.log("🚀 ~ file: Contact.jsx:83 ~ Contact ~ userEmail:", userEmail);
+  const [userMessage, setuserMessage] = useState();
+  console.log(
+    "🚀 ~ file: Contact.jsx:85 ~ Contact ~ userMessage:",
+    userMessage
+  );
 
   // Handle Form
   const handleForm = async (e) => {
     e.preventDefault();
+
     await axios
-      .post("/send-main", formData)
+      .post("/send-mail", { userName, userEmail, userMessage })
       .then((response) => {
         console.log(response);
       })
       .catch((error) => {
         console.log(error);
       });
-  };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
   };
 
   return (
@@ -110,19 +109,27 @@ const Contact = () => {
             <Title>Contact Us</Title>
             <Input
               placeholder="Enter Name"
-              value={formName}
-              onChange={handleChange}
+              value={userName}
+              type="text"
+              name="userName"
+              // onChange={(e) => setformName(e.target.value)}
+              onChange={(e) => setuserName(e.target.value)}
             />
             <Input
               placeholder="Enter Email"
-              values={formEmail}
-              onChange={handleChange}
+              value={userEmail} // Corrected prop name
+              type="text"
+              name="userEmail"
+              onChange={(e) => setuserEmail(e.target.value)}
             />
             <TextArea
               placeholder="Message"
               rows={10}
-              value={formMessage}
-              onChange={handleChange}
+              value={userMessage}
+              type="text"
+              name="userMessage"
+              // onChange={(e) => setformMessage(e.target.value)}
+              onChange={(e) => setuserMessage(e.target.value)}
             />
             <Button type="submit">Submit</Button>
           </Form>
