@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 // Define the endpoint for sending emails
-app.post("/send-email", (req, res) => {
+app.post("/send-mail", (req, res) => {
   const { userName, userEmail, userMessage } = req.body;
 
   const mailOptions = {
