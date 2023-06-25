@@ -92,7 +92,7 @@ const Contact = () => {
     e.preventDefault();
 
     await axios
-      .post("/send-mail", { userName, userEmail, userMessage })
+      .post("http://localhost:3001/send-mail", { userName, userEmail, userMessage })
       .then((response) => {
         console.log(response);
       })

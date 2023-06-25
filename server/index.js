@@ -1,37 +1,32 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
 const app = express();
+const cors = require("cors");
 const port = 3001; // or any other port you prefer
+require("dotenv").config();
+
+// Enable CORS if needed
+app.use(cors({ origin: true, credentials: true }));
 
 // Configure nodemailer transporter
 const transporter = nodemailer.createTransport({
   service: "Gmail",
   auth: {
-    user: "ihtishamkhattak9504@gmail.com",
-    pass: "t1isREjH1133!@#$",
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD,
   },
-});
-
-// Enable CORS if needed
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
 });
 
 // Middleware to parse JSON data
 app.use(express.json());
 
 // Define the endpoint for sending emails
-app.post("/send-mail", (req, res) => {
+app.post("http://localhost:5173/send-mail", (req, res) => {
   const { userName, userEmail, userMessage } = req.body;
 
   const mailOptions = {
-    from: "ihtishamkhattak9504@gmail.com",
-    to: "recipient-email@example.com",
+    from: process.env.EMAIL,
+    to: "ikpashteen1@gmail.com",
     subject: "New Contact Form Submission",
     text: `Name: ${userName}\nEmail: ${userEmail}\nMessage: ${userMessage}`,
   };
@@ -51,4 +46,3 @@ app.post("/send-mail", (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-``;
