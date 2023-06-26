@@ -8,20 +8,24 @@ require("dotenv").config();
 // Enable CORS if needed
 app.use(cors({ origin: true, credentials: true }));
 
+// Middleware to parse JSON data
+app.use(express.json());
+
 // Configure nodemailer transporter
 const transporter = nodemailer.createTransport({
   service: "Gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  requireTLS: true,
   auth: {
     user: process.env.EMAIL,
     pass: process.env.PASSWORD,
   },
 });
 
-// Middleware to parse JSON data
-app.use(express.json());
-
 // Define the endpoint for sending emails
-app.post("http://localhost:5173/send-mail", (req, res) => {
+app.post("/send-mail", (req, res) => {
   const { userName, userEmail, userMessage } = req.body;
 
   const mailOptions = {

@@ -78,21 +78,19 @@ const Right = styled.div`
 
 const Contact = () => {
   const [userName, setUserName] = useState();
-  console.log("🚀 ~ file: Contact.jsx:81 ~ Contact ~ userName:", userName);
   const [userEmail, setUserEmail] = useState();
-  console.log("🚀 ~ file: Contact.jsx:83 ~ Contact ~ userEmail:", userEmail);
   const [userMessage, setUserMessage] = useState();
-  console.log(
-    "🚀 ~ file: Contact.jsx:85 ~ Contact ~ userMessage:",
-    userMessage
-  );
 
   // Handle Form
   const handleForm = async (e) => {
     e.preventDefault();
 
     await axios
-      .post("http://localhost:3001/send-mail", { userName, userEmail, userMessage })
+      .post("http://localhost:3001/send-mail", {
+        userName,
+        userEmail,
+        userMessage,
+      })
       .then((response) => {
         console.log(response);
       })
@@ -132,6 +130,17 @@ const Contact = () => {
               onChange={(e) => setUserMessage(e.target.value)}
             />
             <Button type="submit">Submit</Button>
+
+            {window.location.hash === "#success" && (
+              <div className="success">
+                <p>Email Send Successfully</p>
+              </div>
+            )}
+            {window.location.hash === "#error" && (
+              <div id="error">
+                <p>An error occured while submitting the form.</p>
+              </div>
+            )}
           </Form>
         </Left>
         <Right>
