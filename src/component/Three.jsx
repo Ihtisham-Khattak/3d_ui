@@ -1,8 +1,12 @@
-import { OrbitControls } from "@react-three/drei";
+import {
+  OrbitControls,
+  PerspectiveCamera,
+  RenderTexture,
+  Text,
+} from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React from "react";
 import { styled } from "styled-components";
-import { MeshNormalMaterial } from "three";
 
 const Container = styled.div`
   height: 100vh;
@@ -20,9 +24,18 @@ const Three = () => {
         {/* edges of the box */}
         <directionalLight position={[3, 2, 1]} />
         <mesh>
-          <boxGeometry args={[1, 1, 1]} />
+          <boxGeometry args={[2, 2, 2]} />
+
           {/* applying different colors */}
-          <meshNormalMaterial color="red" />
+          <meshStandardMaterial color="#5E5A3C">
+            <RenderTexture attach="map">
+              <PerspectiveCamera makeDefault position={[0,0,1]} />
+              <color attach="background" args={["#1E363F"]} />
+              <Text fontSize={.8} color={["pink"]}>
+                Hello
+              </Text>
+            </RenderTexture>
+          </meshStandardMaterial>
         </mesh>
       </Canvas>
     </Container>
